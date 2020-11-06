@@ -1,0 +1,19 @@
+.DatosdeOrden{
+  background-image: url("../img/Fondo.jpg");
+  
+}
+
+h1{
+  color: rgb(245, 245, 245);
+  font-family: 'Open Sans', sans-serif;
+  
+  
+}
+
+.btn{
+  margin: 1cm;
+}
+
+.Separador{
+margin-top: -5cm
+}+
