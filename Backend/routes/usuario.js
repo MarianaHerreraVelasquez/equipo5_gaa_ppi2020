@@ -5,4 +5,14 @@ const mysqlConnection =require('../db/db');
 
 /// contenido
 
+
+router.get('/usuarios',(req,res)=>{
+mysqlConnection.query('SELECT * from usuario ',(err,rows,fiels)=>{
+if(!err){
+   res.json(rows); 
+}else{
+console.log(err);
+}});
+})// fin
+
 module.exports = router;
