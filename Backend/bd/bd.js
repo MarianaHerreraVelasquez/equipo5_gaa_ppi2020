@@ -1,10 +1,10 @@
 const mysql =require('mysql');
 const mysqlConnection= mysql.createConnection({
     // db creada https://console.clever-cloud.com/
-host:'host clever cloud',
-user:'usuario',
-password:'piXeRzrY5CoTJ351xaU4',
-database:'bprbeudfwg7eeipqbp9t',
+host:'bpmcxfkapmc1iei8avsl-mysql.services.clever-cloud.com',
+user:'u0zzxn4fqtfsh3gi',
+password:'ZIYtLpVw42OmpvjDmNzI',
+database:'bpmcxfkapmc1iei8avsl',
 multipleStatements:true
 /*
 host:'181.133.136.83',
