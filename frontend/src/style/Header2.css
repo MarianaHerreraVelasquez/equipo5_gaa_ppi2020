@@ -1,0 +1,25 @@
+.Logo {
+  height: 170px;
+  width: 170px;
+}
+
+.Logo2 {
+  height: 95px;
+  width: 200px;
+}
+
+.Header {
+  background-color: #414141;
+  font-family: "Open Sans", sans-serif;
+}
+
+.Frase {
+  color: rgb(255, 255, 255);
+  font-family: "Open Sans", sans-serif;
+}
+.btn {
+  margin-left: -4;
+}
+.Menu {
+  margin-top: -1cm;
+}
