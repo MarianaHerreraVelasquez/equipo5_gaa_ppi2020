@@ -7,7 +7,7 @@ const router = Router();
 
 const mysqlConnection = require("../db/db.js");
 
-// Parque
+// Pedido
 //Petición get
 router.get("/parque", (req, res) => {
   mysqlConnection.query("SELECT * FROM parque", (err, rows, fields) => {
