@@ -9,8 +9,8 @@ const mysqlConnection = require("../db/db.js");
 
 // Tipo de Usuario
 //Petición get
-router.get("/parque", (req, res) => {
-  mysqlConnection.query("SELECT * FROM parque", (err, rows, fields) => {
+router.get("/tipo_usuario", (req, res) => {
+  mysqlConnection.query("SELECT * FROM tipo_usuario", (err, rows, fields) => {
     if (!err) {
       res.status(200).json(rows);
     } else {
@@ -20,81 +20,48 @@ router.get("/parque", (req, res) => {
 });
 
 //Petición post
-router.post("/parque", (req, res) => {
+router.post("/tipo_usuario", (req, res) => {
   const {
-    nombre,
-    comentario,
-    transporte,
-    recomendaciones,
-    historia,
-    direccion,
-    longitud,
-    latitud
+    nombre
+   
   } = req.body;
 
-  let nuevoParque = `INSERT INTO parque (  nombre,
-    comentario,
-    transporte,
-    recomendaciones,
-    historia,
-    direccion,
-    longitud,
-    latitud ) VALUES (?,?,?,?,?,?,?,?,?)`;
+  let nuevoTipo_usuario = `INSERT INTO tipo_usuario (  nombre ) VALUES (?)`;
 
   mysqlConnection.query(
-    nuevoParque,
+    nuevoTipo_usuario,
     [
-      nombre,
-      comentario,
-      transporte,
-      recomendaciones,
-      historia,
-      direccion,
-      longitud,
-      latitud
+      nombre
     ],
     (err, results, fields) => {
       if (err) {
         res.status(500);
       } else {
-        res.status(201).json({ message: `Parque ingresado` });
+        res.status(201).json({ message: `Tipo de usuario registrado` });
       }
     }
   );
 });
 
 //Petición put
-router.put("/parque/:ID", (req, res) => {
+router.put("/tipo_usuario/:ID", (req, res) => {
   const {
-    nombre,
-    comentario,
-    transporte,
-    recomendaciones,
-    historia,
-    direccion,
-    longitud,
-    latitud
+    nombre
+  
   } = req.body;
   const { ID } = req.params;
 
-  let actualizarParque = `UPDATE parque SET nombre=?, comentario=?, transporte=?, recomendaciones=?, historia=?, direccion=?,  longitud=?, latitud = ? 
+  let actualizarTipo_usuario = `UPDATE tipo_usuario SET nombre=? 
   WHERE ID = ?`;
   mysqlConnection.query(
-    actualizarParque,
+    actualizarTipo_usuario,
     [
       nombre,
-      comentario,
-      transporte,
-      recomendaciones,
-      historia,
-      direccion,
-      longitud,
-      latitud,
       ID
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Parque actualizado con éxito` });
+        res.status(201).json({ status: `Tipo de usuario actualizado con éxito` });
       } else {
         res.status(500);
       }
@@ -103,14 +70,14 @@ router.put("/parque/:ID", (req, res) => {
 });
 
 //PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/parque/:ID", (req, res) => {
+router.delete("/tipo_usuario/:ID", (req, res) => {
   const { ID } = req.params;
   mysqlConnection.query(
-    `DELETE FROM parque WHERE ID =?`,
+    `DELETE FROM tipo_usuario WHERE ID =?`,
     [ID],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `El parque ha sido eliminado` });
+        res.status(200).json({ status: `El tipo de usuario ha sido eliminado` });
       } else {
         res.status(500);
       }
