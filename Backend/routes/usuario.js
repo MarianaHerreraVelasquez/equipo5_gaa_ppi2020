@@ -68,7 +68,7 @@ router.put("/usuario/:ID", (req, res) => {
   const { ID } = req.params;
 
   let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, ID_tipo_usuario=?, ID_tipo_documento=? 
-  WHERE id = ?`;
+  WHERE ID = ?`;
   mysqlConnection.query(
     actualizarUsuario,
     [

@@ -6,8 +6,8 @@ const { Router } = require("express");
 
 // Tipo de documento para el registro de un usuario
 //Petición get
-router.get("/usuario", (req, res) => {
-  mysqlConnection.query("SELECT * FROM usuario", (err, rows, fields) => {
+router.get("/tipo_documento", (req, res) => {
+  mysqlConnection.query("SELECT * FROM tipo_documento", (err, rows, fields) => {
     if (!err) {
       res.status(200).json(rows);
     } else {
@@ -17,72 +17,66 @@ router.get("/usuario", (req, res) => {
 });
 
 //Petición post
-router.post("/usuario", (req, res) => {
+router.post("/tipo_documento", (req, res) => {
   const {
-    nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
-
+    targeta_identidad,
+    cedula,
+    pasaporte,
+    libreta_electoral,
+    carnet_de_extranjeria
   } = req.body;
 
-  let nuevoUsuario = `INSERT INTO usuario (  nombre,
-    documento,
-    dirrecion,
-    contrasena,
-    id_tipo_usuario,
-    id_tipo_documento ) VALUES (?,?,?,?,?,?,?)`;
+  let nuevoUsuario = `INSERT INTO usuario (  targeta_identidad,
+    cedula,
+    pasaporte,
+    libreta_electoral,
+    carnet_de_extranjeria ) VALUES (?,?,?,?,?,?)`;
 
   mysqlConnection.query(
     nuevoUsuario,
     [
-      nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento
+      targeta_identidad,
+      cedula,
+      pasaporte,
+      libreta_electoral,
+      carnet_de_extranjeria
     ],
     (err, results, fields) => {
       if (err) {
         res.status(500);
       } else {
-        res.status(201).json({ message: `Usuario registrado` });
+        res.status(201).json({ message: `Tipo de documento registrado` });
       }
     }
   );
 });
 
 //Petición put
-router.put("/usuario/:ID", (req, res) => {
+router.put("/tipo_documento/:ID", (req, res) => {
   const {
-    nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
+    targeta_identidad,
+    cedula,
+    pasaporte,
+    libreta_electoral,
+    carnet_de_extranjeria
   } = req.body;
   const { ID } = req.params;
 
-  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, ID_tipo_usuario=?, ID_tipo_documento=? 
-  WHERE id = ?`;
+  let actualizarTipoDocumento = `UPDATE tipo_documento SET targeta_identidad=?, cedula=?, pasaporte=?, libreta_electoral=?, carnet_de_extranjeria=?
+  WHERE ID = ?`;
   mysqlConnection.query(
-    actualizarUsuario,
+    actualizarTipoDocumento,
     [
-      nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento,
+      targeta_identidad,
+      cedula,
+      pasaporte,
+      libreta_electoral,
+      carnet_de_extranjeria,
       ID
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Usuario actualizado correctamente` });
+        res.status(201).json({ status: `Documento actualizado correctamente` });
       } else {
         res.status(500);
       }
@@ -91,14 +85,14 @@ router.put("/usuario/:ID", (req, res) => {
 });
 
 //PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/usuario/:ID", (req, res) => {
+router.delete("/tipo_documento/:ID", (req, res) => {
   const { ID } = req.params;
   mysqlConnection.query(
-    `DELETE FROM usuario WHERE ID =?`,
+    `DELETE FROM tipo_documento WHERE ID =?`,
     [ID],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `El usuario ha sido eliminado` });
+        res.status(200).json({ status: `El documento ha sido eliminado` });
       } else {
         res.status(500);
       }
