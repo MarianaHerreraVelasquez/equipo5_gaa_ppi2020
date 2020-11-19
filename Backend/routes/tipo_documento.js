@@ -4,7 +4,7 @@ const mysqlConnection =require('../db/db.js');
 
 const { Router } = require("express");
 
-// Usuario
+// Tipo de documento para el registro de un usuario
 //Petición get
 router.get("/usuario", (req, res) => {
   mysqlConnection.query("SELECT * FROM usuario", (err, rows, fields) => {
