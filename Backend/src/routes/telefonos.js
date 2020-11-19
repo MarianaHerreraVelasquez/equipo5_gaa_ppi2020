@@ -1,6 +1,6 @@
-const express = require('express');//tabNIne
+const express = require("express"); //tabNIne
 const router = express.Router();
-const mysqlConnection =require('../db/db.js');
+const mysqlConnection = require("../db/db.js");
 
 const { Router } = require("express");
 
@@ -25,7 +25,6 @@ router.post("/usuario", (req, res) => {
     contrasena,
     ID_tipo_usuario,
     ID_tipo_documento
-
   } = req.body;
 
   let nuevoUsuario = `INSERT INTO usuario (  nombre,
