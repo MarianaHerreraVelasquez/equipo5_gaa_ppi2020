@@ -26,7 +26,7 @@ router.post("/tipo_usuario", (req, res) => {
    
   } = req.body;
 
-  let nuevoTipo_usuario = `INSERT INTO tipo_usuario (  nombre ) VALUES (?)`;
+  let nuevoTipo_usuario = `INSERT INTO tipo_usuario (  nombre ) VALUES (?,?)`;
 
   mysqlConnection.query(
     nuevoTipo_usuario,

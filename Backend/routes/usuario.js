@@ -36,7 +36,7 @@ router.post("/usuario", (req, res) => {
     dirrecion,
     contrasena,
     id_tipo_usuario,
-    id_tipo_documento ) VALUES (?,?,?,?,?,?)`;
+    id_tipo_documento ) VALUES (?,?,?,?,?,?,?)`;
 
   mysqlConnection.query(
     nuevoUsuario,
