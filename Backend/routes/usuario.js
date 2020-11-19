@@ -26,12 +26,12 @@ router.post("/usuario", (req, res) => {
     documento,
     direccion,
     contrasena,
-    id_tipo_usuario,
-    id_tipo_documento
+    ID_tipo_usuario,
+    ID_tipo_documento
 
   } = req.body;
 
-  let nuevoParque = `INSERT INTO usuario (  ,
+  let nuevoUsuario = `INSERT INTO usuario (  nombre,
     documento,
     dirrecion,
     contrasena,
@@ -39,14 +39,14 @@ router.post("/usuario", (req, res) => {
     id_tipo_documento ) VALUES (?,?,?,?,?,?)`;
 
   mysqlConnection.query(
-    nuevoParque,
+    nuevoUsuario,
     [
       nombre,
       documento,
       direccion,
       contrasena,
-      id_tipo_usuario,
-      id_tipo_documento
+      ID_tipo_usuario,
+      ID_tipo_documento
     ],
     (err, results, fields) => {
       if (err) {
@@ -65,12 +65,12 @@ router.put("/usuario/:ID", (req, res) => {
     documento,
     direccion,
     contrasena,
-    id_tipo_usuario,
-    id_tipo_documento
+    ID_tipo_usuario,
+    ID_tipo_documento
   } = req.body;
   const { ID } = req.params;
 
-  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, id_tipo_usuario=?, id_tipo_documento=? 
+  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, ID_tipo_usuario=?, ID_tipo_documento=? 
   WHERE id = ?`;
   mysqlConnection.query(
     actualizarUsuario,
@@ -79,8 +79,8 @@ router.put("/usuario/:ID", (req, res) => {
       documento,
       direccion,
       contrasena,
-      id_tipo_usuario,
-      id_tipo_documento,
+      ID_tipo_usuario,
+      ID_tipo_documento,
       ID
     ],
     (err, rows, fields) => {
