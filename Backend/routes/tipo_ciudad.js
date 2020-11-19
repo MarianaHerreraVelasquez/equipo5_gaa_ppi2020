@@ -6,8 +6,8 @@ const { Router } = require("express");
 
 // Usuario
 //Petición get
-router.get("/usuario", (req, res) => {
-  mysqlConnection.query("SELECT * FROM usuario", (err, rows, fields) => {
+router.get("/tipo_ciudad", (req, res) => {
+  mysqlConnection.query("SELECT * FROM tipo_ciudad", (err, rows, fields) => {
     if (!err) {
       res.status(200).json(rows);
     } else {
@@ -17,72 +17,62 @@ router.get("/usuario", (req, res) => {
 });
 
 //Petición post
-router.post("/usuario", (req, res) => {
+router.post("/tipo_ciudad", (req, res) => {
   const {
     nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
+    latitud,
+    ubicacion,
+    orientacion
 
   } = req.body;
 
-  let nuevoUsuario = `INSERT INTO usuario (  nombre,
-    documento,
-    dirrecion,
-    contrasena,
-    id_tipo_usuario,
-    id_tipo_documento ) VALUES (?,?,?,?,?,?,?)`;
+  let nuevoRestauranteCiudad = `INSERT INTO tipo_ciudad ( nombre,
+    latitud,
+    ubicacion,
+    orientacion ) VALUES (?,?,?,?,?)`;
 
   mysqlConnection.query(
-    nuevoUsuario,
+    nuevoRestauranteCiudad,
     [
       nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento
+      latitud,
+      ubicacion,
+      orientacion
     ],
     (err, results, fields) => {
       if (err) {
         res.status(500);
       } else {
-        res.status(201).json({ message: `Usuario registrado` });
+        res.status(201).json({ message: `Nuevo restaurante ingresado en ciudad` });
       }
     }
   );
 });
 
 //Petición put
-router.put("/usuario/:ID", (req, res) => {
+router.put("/tipo_ciudad/:ID", (req, res) => {
   const {
     nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
+    latitud,
+    ubicacion,
+    orientacion
   } = req.body;
   const { ID } = req.params;
 
-  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, ID_tipo_usuario=?, ID_tipo_documento=? 
+  let actualizarCiudad = `UPDATE tipo_ciudad SET nombre=?, latitud=?, ubicacion=?, orientacion=?
   WHERE id = ?`;
   mysqlConnection.query(
-    actualizarUsuario,
+    actualizarCiudad,
     [
       nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento,
+      latitud,
+      ubicacion,
+      orientacion,
       ID
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Usuario actualizado correctamente` });
+        res.status(201).json({ status: `Ciudad actualizada con exito` });
       } else {
         res.status(500);
       }
@@ -91,14 +81,14 @@ router.put("/usuario/:ID", (req, res) => {
 });
 
 //PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/usuario/:ID", (req, res) => {
+router.delete("/tipo_ciudad/:ID", (req, res) => {
   const { ID } = req.params;
   mysqlConnection.query(
-    `DELETE FROM usuario WHERE ID =?`,
+    `DELETE FROM tipo_ciudad WHERE ID =?`,
     [ID],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `El usuario ha sido eliminado` });
+        res.status(200).json({ status: `Datos de ciudad han sido eliminados` });
       } else {
         res.status(500);
       }
