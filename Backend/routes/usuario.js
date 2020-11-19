@@ -1,11 +1,8 @@
 const express = require('express');//tabNIne
 const router = express.Router();
-const mysqlConnection =require('../db/db');
+const mysqlConnection =require('../db/db.js');
 
 const { Router } = require("express");
-const router = Router();
-
-const mysqlConnection = require("../db/db.js");
 
 // Usuario
 //Petición get

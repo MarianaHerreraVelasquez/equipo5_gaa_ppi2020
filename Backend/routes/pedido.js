@@ -1,16 +1,13 @@
 const express = require('express');//tabNIne
 const router = express.Router();
-const mysqlConnection =require('../db/db');
+const mysqlConnection =require('../db/db.js');
 
 const { Router } = require("express");
-const router = Router();
-
-const mysqlConnection = require("../db/db.js");
 
 // Pedido
 //Petición get
-router.get("/parque", (req, res) => {
-  mysqlConnection.query("SELECT * FROM parque", (err, rows, fields) => {
+router.get("/pedido", (req, res) => {
+  mysqlConnection.query("SELECT * FROM pedido", (err, rows, fields) => {
     if (!err) {
       res.status(200).json(rows);
     } else {
@@ -20,81 +17,79 @@ router.get("/parque", (req, res) => {
 });
 
 //Petición post
-router.post("/parque", (req, res) => {
+router.post("/pedido", (req, res) => {
   const {
-    nombre,
-    comentario,
-    transporte,
-    recomendaciones,
-    historia,
-    direccion,
-    longitud,
-    latitud
+    fecha,
+    datos,
+    precio,
+    estado,
+    tipo,
+    cantidad,
+    ID_usuario
+  
   } = req.body;
 
-  let nuevoParque = `INSERT INTO parque (  nombre,
-    comentario,
-    transporte,
-    recomendaciones,
-    historia,
-    direccion,
-    longitud,
-    latitud ) VALUES (?,?,?,?,?,?,?,?,?)`;
+  let nuevoPedido = `INSERT INTO pedido (  fecha,
+    fecha,
+    datos,
+    precio,
+    estado,
+    tipo,
+    cantidad,
+    ID_usuario ) VALUES (?,?,?,?,?,?,?,?,?)`;
 
   mysqlConnection.query(
-    nuevoParque,
+    nuevoPedido,
     [
-      nombre,
-      comentario,
-      transporte,
-      recomendaciones,
-      historia,
-      direccion,
-      longitud,
-      latitud
+      fecha,
+      datos,
+      precio,
+      estado,
+      tipo,
+      cantidad,
+      ID_usuario
     ],
     (err, results, fields) => {
       if (err) {
         res.status(500);
       } else {
-        res.status(201).json({ message: `Parque ingresado` });
+        res.status(201).json({ message: `Pedido registrado` });
       }
     }
   );
 });
 
 //Petición put
-router.put("/parque/:ID", (req, res) => {
+router.put("/pedido/:ID", (req, res) => {
   const {
-    nombre,
-    comentario,
-    transporte,
-    recomendaciones,
-    historia,
-    direccion,
-    longitud,
-    latitud
+      fecha,
+      datos,
+      precio,
+      estado,
+      tipo,
+      cantidad,
+      ID_usuario
+      
   } = req.body;
   const { ID } = req.params;
 
-  let actualizarParque = `UPDATE parque SET nombre=?, comentario=?, transporte=?, recomendaciones=?, historia=?, direccion=?,  longitud=?, latitud = ? 
+  let actualizarPedido = `UPDATE parque SET fecha=?, datos=?, precio=?, estado=?, tipo=?, cantidad=?, ID_usuario=? 
   WHERE ID = ?`;
   mysqlConnection.query(
-    actualizarParque,
+    actualizarPedido,
     [
-      nombre,
-      comentario,
-      transporte,
-      recomendaciones,
-      historia,
-      direccion,
-      longitud,
-      latitud,
+      fecha,
+      datos,
+      precio,
+      estado,
+      tipo,
+      cantidad,
+      ID_usuario,
       ID
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Parque actualizado con éxito` });
+        res.status(201).json({ status: `Pedido actualizado con éxito` });
       } else {
         res.status(500);
       }
@@ -103,14 +98,14 @@ router.put("/parque/:ID", (req, res) => {
 });
 
 //PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/parque/:ID", (req, res) => {
+router.delete("/pedido/:ID", (req, res) => {
   const { ID } = req.params;
   mysqlConnection.query(
-    `DELETE FROM parque WHERE ID =?`,
+    `DELETE FROM pedido WHERE ID =?`,
     [ID],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `El parque ha sido eliminado` });
+        res.status(200).json({ status: `El pedido ha sido eliminado` });
       } else {
         res.status(500);
       }
