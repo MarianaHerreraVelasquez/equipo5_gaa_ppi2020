@@ -6,12 +6,6 @@ const mysqlConnection = mysql.createConnection({
   password: "Dn2b9gl2QNYaDPIfZvmI",
   database: "bsjgsidupyihlwrpmdlt",
   multipleStatements: true
-  /*
-host:'181.133.136.83',
-user:'mediatecnica',
-password:'123',
-database:'lab_mediatecnica',
-*/
 });
 
 mysqlConnection.connect(function (err) {
