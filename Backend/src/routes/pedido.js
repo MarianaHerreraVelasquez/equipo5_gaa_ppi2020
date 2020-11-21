@@ -25,18 +25,19 @@ router.post("/pedido", (req, res) => {
     estado,
     tipo,
     cantidad,
-    ID_usuario
+    id_producto_pedido,
+    id_usuario
   
   } = req.body;
 
   let nuevoPedido = `INSERT INTO pedido (  fecha,
-    fecha,
     datos,
     precio,
     estado,
     tipo,
     cantidad,
-    ID_usuario ) VALUES (?,?,?,?,?,?,?,?,?)`;
+    id_producto_pedido,
+    id_usuario ) VALUES (?,?,?,?,?,?,?,?)`;
 
   mysqlConnection.query(
     nuevoPedido,
@@ -47,7 +48,8 @@ router.post("/pedido", (req, res) => {
       estado,
       tipo,
       cantidad,
-      ID_usuario
+      id_producto_pedido,
+      id_usuario
     ],
     (err, results, fields) => {
       if (err) {
@@ -68,13 +70,14 @@ router.put("/pedido/:ID", (req, res) => {
       estado,
       tipo,
       cantidad,
-      ID_usuario
+      id_producto_pedido,
+      id_usuario
       
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarPedido = `UPDATE parque SET fecha=?, datos=?, precio=?, estado=?, tipo=?, cantidad=?, ID_usuario=? 
-  WHERE ID = ?`;
+  let actualizarPedido = `UPDATE parque SET fecha=?, datos=?, precio=?, estado=?, tipo=?, cantidad=?, id_producto_pedido=?, id_usuario=? 
+  WHERE id = ?`;
   mysqlConnection.query(
     actualizarPedido,
     [
@@ -84,12 +87,13 @@ router.put("/pedido/:ID", (req, res) => {
       estado,
       tipo,
       cantidad,
-      ID_usuario,
-      ID
+      id_producto_pedido,
+      id_usuario,
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Pedido actualizado con éxito` });
+        res.status(201).json({ status: `Pedido actualizado` });
       } else {
         res.status(500);
       }
@@ -97,12 +101,12 @@ router.put("/pedido/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/pedido/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete
+router.delete("/pedido/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM pedido WHERE ID =?`,
-    [ID],
+    `DELETE FROM pedido WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
         res.status(200).json({ status: `El pedido ha sido eliminado` });

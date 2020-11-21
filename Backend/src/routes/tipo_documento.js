@@ -19,27 +19,27 @@ router.get("/tipo_documento", (req, res) => {
 //Petición post
 router.post("/tipo_documento", (req, res) => {
   const {
-    targeta_identidad,
+    tarjeta_identidad,
     cedula,
     pasaporte,
     libreta_electoral,
-    carnet_de_extranjeria
+    carnet_extranjeria
   } = req.body;
 
-  let nuevoUsuario = `INSERT INTO usuario (  targeta_identidad,
+  let nuevoTipoDocumento = `INSERT INTO usuario (  tarjeta_identidad,
     cedula,
     pasaporte,
     libreta_electoral,
-    carnet_de_extranjeria ) VALUES (?,?,?,?,?,?)`;
+    carnet_extranjeria ) VALUES (?,?,?,?,?)`;
 
   mysqlConnection.query(
-    nuevoUsuario,
+    nuevoTipoDocumento,
     [
-      targeta_identidad,
+      tarjeta_identidad,
       cedula,
       pasaporte,
       libreta_electoral,
-      carnet_de_extranjeria
+      carnet_extranjeria
     ],
     (err, results, fields) => {
       if (err) {
@@ -52,31 +52,31 @@ router.post("/tipo_documento", (req, res) => {
 });
 
 //Petición put
-router.put("/tipo_documento/:ID", (req, res) => {
+router.put("/tipo_documento/:id", (req, res) => {
   const {
-    targeta_identidad,
+    tarjeta_identidad,
     cedula,
     pasaporte,
     libreta_electoral,
-    carnet_de_extranjeria
+    carnet_extranjeria
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarTipoDocumento = `UPDATE tipo_documento SET targeta_identidad=?, cedula=?, pasaporte=?, libreta_electoral=?, carnet_de_extranjeria=?
-  WHERE ID = ?`;
+  let actualizarTipoDocumento = `UPDATE tipo_documento SET tarjeta_identidad=?, cedula=?, pasaporte=?, libreta_electoral=?, carnet_extranjeria=?
+  WHERE id = ?`;
   mysqlConnection.query(
     actualizarTipoDocumento,
     [
-      targeta_identidad,
+      tarjeta_identidad,
       cedula,
       pasaporte,
       libreta_electoral,
-      carnet_de_extranjeria,
-      ID
+      carnet_extranjeria,
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Documento actualizado correctamente` });
+        res.status(201).json({ status: `Tipo de documento actualizado correctamente` });
       } else {
         res.status(500);
       }
@@ -84,15 +84,15 @@ router.put("/tipo_documento/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/tipo_documento/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete 
+router.delete("/tipo_documento/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM tipo_documento WHERE ID =?`,
-    [ID],
+    `DELETE FROM tipo_documento WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `El documento ha sido eliminado` });
+        res.status(200).json({ status: `El tipo de documento ha sido eliminado` });
       } else {
         res.status(500);
       }

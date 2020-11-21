@@ -24,7 +24,7 @@ router.post("/categoria", (req, res) => {
   } = req.body;
 
   let nuevaCategoria = `INSERT INTO categoria  (  nombre,
-    referencia ) VALUES (?,?,?)`;
+    referencia ) VALUES (?,?)`;
 
   mysqlConnection.query(
     nuevaCategoria,
@@ -43,21 +43,21 @@ router.post("/categoria", (req, res) => {
 });
 
 //Petición put
-router.put("/categoria/:ID", (req, res) => {
+router.put("/categoria/:id", (req, res) => {
   const {
     nombre,
     referencia
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
   let actualizarCategoria = `UPDATE categoria SET nombre=?, referencia=?
-  WHERE ID = ?`;
+  WHERE id = ?`;
   mysqlConnection.query(
     actualizarCategoria,
     [
       nombre,
       referencia,
-      ID
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
@@ -69,12 +69,12 @@ router.put("/categoria/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/categoria/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete
+router.delete("/categoria/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM categoria WHERE ID =?`,
-    [ID],
+    `DELETE FROM categoria WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
         res.status(200).json({ status: `La categoria ha sido eliminada` });

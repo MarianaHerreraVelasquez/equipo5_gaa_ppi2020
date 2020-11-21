@@ -4,10 +4,10 @@ const mysqlConnection =require('../db/db.js');
 
 const { Router } = require("express");
 
-// Usuario
+// Producto pedido
 //Petición get
-router.get("/usuario", (req, res) => {
-  mysqlConnection.query("SELECT * FROM usuario", (err, rows, fields) => {
+router.get("/producto_pedido", (req, res) => {
+  mysqlConnection.query("SELECT * FROM producto_pedido", (err, rows, fields) => {
     if (!err) {
       res.status(200).json(rows);
     } else {
@@ -17,72 +17,55 @@ router.get("/usuario", (req, res) => {
 });
 
 //Petición post
-router.post("/usuario", (req, res) => {
+router.post("/producto_pedido", (req, res) => {
   const {
-    nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
-
+    solicitud,
+    inventario,
+    entrega
   } = req.body;
 
-  let nuevoUsuario = `INSERT INTO usuario (  nombre,
-    documento,
-    dirrecion,
-    contrasena,
-    id_tipo_usuario,
-    id_tipo_documento ) VALUES (?,?,?,?,?,?,?)`;
+  let nuevoProductoPedido = `INSERT INTO producto_pedido (  solicitud,
+    inventario, entrega) VALUES (?,?,?)`;
 
   mysqlConnection.query(
-    nuevoUsuario,
+    nuevoProductoPedido,
     [
-      nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento
+      solicitud,
+      inventario,
+      entrega
     ],
     (err, results, fields) => {
       if (err) {
         res.status(500);
       } else {
-        res.status(201).json({ message: `Usuario registrado` });
+        res.status(201).json({ message: `Producto pedido registrado` });
       }
     }
   );
 });
 
 //Petición put
-router.put("/usuario/:ID", (req, res) => {
+router.put("/producto_pedido/:id", (req, res) => {
   const {
-    nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
+    solicitud,
+    inventario,
+    entrega
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, ID_tipo_usuario=?, ID_tipo_documento=? 
+  let actualizarProductoPedido = `UPDATE producto_pedido SET solicitud=?, inventario=?, entrega=?
   WHERE id = ?`;
   mysqlConnection.query(
-    actualizarUsuario,
+    actualizarProductoPedido,
     [
-      nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento,
-      ID
+      solicitud,
+      inventario,
+      entrega,
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Usuario actualizado correctamente` });
+        res.status(201).json({ status: `Producto pedido actualizado correctamente` });
       } else {
         res.status(500);
       }
@@ -90,15 +73,15 @@ router.put("/usuario/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/usuario/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete
+router.delete("/producto_pedido/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM usuario WHERE ID =?`,
-    [ID],
+    `DELETE FROM producto_pedido WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `El usuario ha sido eliminado` });
+        res.status(200).json({ status: `El producto_pedido ha sido eliminado` });
       } else {
         res.status(500);
       }

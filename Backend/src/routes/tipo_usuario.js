@@ -20,13 +20,12 @@ router.get("/tipo_usuario", (req, res) => {
 router.post("/tipo_usuario", (req, res) => {
   const {
     nombre
-   
   } = req.body;
 
-  let nuevoTipo_usuario = `INSERT INTO tipo_usuario (  nombre ) VALUES (?,?)`;
+  let nuevoTipoUsuario = `INSERT INTO tipo_usuario (  nombre ) VALUES (?)`;
 
   mysqlConnection.query(
-    nuevoTipo_usuario,
+    nuevoTipoUsuario,
     [
       nombre
     ],
@@ -41,20 +40,19 @@ router.post("/tipo_usuario", (req, res) => {
 });
 
 //Petición put
-router.put("/tipo_usuario/:ID", (req, res) => {
+router.put("/tipo_usuario/:id", (req, res) => {
   const {
     nombre
-  
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarTipo_usuario = `UPDATE tipo_usuario SET nombre=? 
-  WHERE ID = ?`;
+  let actualizarTipoUsuario = `UPDATE tipo_usuario SET nombre=? 
+  WHERE id = ?`;
   mysqlConnection.query(
-    actualizarTipo_usuario,
+    actualizarTipoUsuario,
     [
       nombre,
-      ID
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
@@ -66,12 +64,12 @@ router.put("/tipo_usuario/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/tipo_usuario/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete
+router.delete("/tipo_usuario/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM tipo_usuario WHERE ID =?`,
-    [ID],
+    `DELETE FROM tipo_usuario WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
         res.status(200).json({ status: `El tipo de usuario ha sido eliminado` });

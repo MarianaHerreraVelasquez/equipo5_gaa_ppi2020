@@ -21,48 +21,48 @@ router.post("/mesa", (req, res) => {
   const {
     numero,
     informacion,
-    ID_restaurante
+    id_restaurante
   } = req.body;
 
-  let nuevoNumeroMesa = `INSERT INTO mesa (  numero,
+  let nuevaMesa = `INSERT INTO mesa (  numero,
     informacion,
-    ID_restaurante ) VALUES (?,?,?,?)`;
+    id_restaurante ) VALUES (?,?,?)`;
 
   mysqlConnection.query(
-    nuevoNumeroMesa,
+    nuevaMesa,
     [
       numero,
       informacion,
-      ID_restaurante
+      id_restaurante
     ],
     (err, results, fields) => {
       if (err) {
         res.status(500);
       } else {
-        res.status(201).json({ message: `Nuevo numero de mesa ingresado` });
+        res.status(201).json({ message: `Nueva mesa ingresada` });
       }
     }
   );
 });
 
 //Petición put
-router.put("/mesa/:ID", (req, res) => {
+router.put("/mesa/:id", (req, res) => {
   const {
     numero,
     informacion,
-    ID_restaurante
+    id_restaurante
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarMesa = `UPDATE mesa SET numero=?, informacion=?, ID_restaurante=?
-  WHERE ID = ?`;
+  let actualizarMesa = `UPDATE mesa SET numero=?, informacion=?, id_restaurante=?
+  WHERE id = ?`;
   mysqlConnection.query(
     actualizarMesa,
     [
       numero,
       informacion,
-      ID_restaurante,
-      ID
+      id_restaurante,
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
@@ -74,12 +74,12 @@ router.put("/mesa/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/mesa/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete 
+router.delete("/mesa/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM mesa WHERE ID =?`,
-    [ID],
+    `DELETE FROM mesa WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
         res.status(200).json({ status: `La mesa ha sido eliminado` });

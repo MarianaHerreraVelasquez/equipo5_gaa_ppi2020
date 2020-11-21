@@ -23,16 +23,15 @@ router.post("/restaurante", (req, res) => {
     tipo,
     direccion,
     marca,
-    ID_telefonos,
-    ID_tipo_ciudad
-
+    id_telefono,
+    id_tipo_ciudad
   } = req.body;
 
   let nuevoRestaurante = `INSERT INTO restaurante (  tipo,
     direccion,
     marca,
-    ID_telefonos,
-    ID_tipo_ciudad  ) VALUES (?,?,?,?,?,?)`;
+    id_telefono,
+    id_tipo_ciudad  ) VALUES (?,?,?,?,?)`;
 
   mysqlConnection.query(
     nuevoRestaurante,
@@ -40,8 +39,8 @@ router.post("/restaurante", (req, res) => {
       tipo,
       direccion,
       marca,
-      ID_telefonos,
-      ID_tipo_ciudad
+      id_telefono,
+      id_tipo_ciudad
     ],
     (err, results, fields) => {
       if (err) {
@@ -54,27 +53,27 @@ router.post("/restaurante", (req, res) => {
 });
 
 //Petición put
-router.put("/restaurante/:ID", (req, res) => {
+router.put("/restaurante/:id", (req, res) => {
   const {
       tipo,
       direccion,
       marca,
-      ID_telefonos,
-      ID_tipo_ciudad
+      id_telefono,
+      id_tipo_ciudad
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarRestaurante = `UPDATE restaurante SET tipo=?, direccion=?, marca=?, ID_telefonos=?, ID_tipo_ciudad=? 
-  WHERE ID = ?`;
+  let actualizarRestaurante = `UPDATE restaurante SET tipo=?, direccion=?, marca=?, id_telefono=?, id_tipo_ciudad=? 
+  WHERE id = ?`;
   mysqlConnection.query(
     actualizarRestaurante,
     [
       tipo,
       direccion,
       marca,
-      ID_telefonos,
-      ID_tipo_ciudad,
-      ID
+      id_telefono,
+      id_tipo_ciudad,
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
@@ -86,12 +85,12 @@ router.put("/restaurante/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/restaurante/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete
+router.delete("/restaurante/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM restaurante WHERE ID =?`,
-    [ID],
+    `DELETE FROM restaurante WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
         res.status(200).json({ status: `El restaurante ha sido eliminado` });

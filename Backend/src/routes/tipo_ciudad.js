@@ -4,7 +4,7 @@ const mysqlConnection =require('../db/db.js');
 
 const { Router } = require("express");
 
-// Usuario
+// Tipo ciudad
 //Petición get
 router.get("/tipo_ciudad", (req, res) => {
   mysqlConnection.query("SELECT * FROM tipo_ciudad", (err, rows, fields) => {
@@ -23,13 +23,12 @@ router.post("/tipo_ciudad", (req, res) => {
     latitud,
     ubicacion,
     orientacion
-
   } = req.body;
 
   let nuevoRestauranteCiudad = `INSERT INTO tipo_ciudad ( nombre,
     latitud,
     ubicacion,
-    orientacion ) VALUES (?,?,?,?,?)`;
+    orientacion ) VALUES (?,?,?,?)`;
 
   mysqlConnection.query(
     nuevoRestauranteCiudad,
@@ -50,14 +49,14 @@ router.post("/tipo_ciudad", (req, res) => {
 });
 
 //Petición put
-router.put("/tipo_ciudad/:ID", (req, res) => {
+router.put("/tipo_ciudad/:id", (req, res) => {
   const {
     nombre,
     latitud,
     ubicacion,
     orientacion
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
   let actualizarCiudad = `UPDATE tipo_ciudad SET nombre=?, latitud=?, ubicacion=?, orientacion=?
   WHERE id = ?`;
@@ -68,11 +67,11 @@ router.put("/tipo_ciudad/:ID", (req, res) => {
       latitud,
       ubicacion,
       orientacion,
-      ID
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Ciudad actualizada con exito` });
+        res.status(201).json({ status: `El restaurante ingresado en ciudad fue actualizado` });
       } else {
         res.status(500);
       }
@@ -80,15 +79,15 @@ router.put("/tipo_ciudad/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/tipo_ciudad/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete 
+router.delete("/tipo_ciudad/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM tipo_ciudad WHERE ID =?`,
-    [ID],
+    `DELETE FROM tipo_ciudad WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `Datos de ciudad han sido eliminados` });
+        res.status(200).json({ status: `Datos de ciudad del restaurante han sido eliminados` });
       } else {
         res.status(500);
       }

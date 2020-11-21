@@ -4,10 +4,10 @@ const mysqlConnection =require('../db/db.js');
 
 const { Router } = require("express");
 
-// Usuario
+// Pedido restaurante menu 
 //Petición get
-router.get("/usuario", (req, res) => {
-  mysqlConnection.query("SELECT * FROM usuario", (err, rows, fields) => {
+router.get("/pedido_restaurante_menu", (req, res) => {
+  mysqlConnection.query("SELECT * FROM pedido_restaurante_menu", (err, rows, fields) => {
     if (!err) {
       res.status(200).json(rows);
     } else {
@@ -17,72 +17,55 @@ router.get("/usuario", (req, res) => {
 });
 
 //Petición post
-router.post("/usuario", (req, res) => {
+router.post("/pedido_restaurante_menu", (req, res) => {
   const {
-    nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
-
+    id_pedido,
+    id_restaurante,
+    id_menu
   } = req.body;
 
-  let nuevoUsuario = `INSERT INTO usuario (  nombre,
-    documento,
-    dirrecion,
-    contrasena,
-    id_tipo_usuario,
-    id_tipo_documento ) VALUES (?,?,?,?,?,?,?)`;
+  let nuevoPedidoRestauranteMenu = `INSERT INTO pedido_restaurante_menu (  id_pedido,
+    id_restaurante, id_menu) VALUES (?,?,?)`;
 
   mysqlConnection.query(
-    nuevoUsuario,
+    nuevoPedidoRestauranteMenu,
     [
-      nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento
+      id_pedido,
+      id_restaurante,
+      id_menu
     ],
     (err, results, fields) => {
       if (err) {
         res.status(500);
       } else {
-        res.status(201).json({ message: `Usuario registrado` });
+        res.status(201).json({ message: `Pedido restaurante menu registrado` });
       }
     }
   );
 });
 
 //Petición put
-router.put("/usuario/:ID", (req, res) => {
+router.put("/pedido_restaurante_menu/:id", (req, res) => {
   const {
-    nombre,
-    documento,
-    direccion,
-    contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
+    id_pedido,
+    id_restaurante,
+    id_menu
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, ID_tipo_usuario=?, ID_tipo_documento=? 
+  let actualizarPedidoRestauranteMenu = `UPDATE pedido_restaurante_menu SET id_pedido=?, id_restaurante=?, id_menu=?
   WHERE id = ?`;
   mysqlConnection.query(
-    actualizarUsuario,
+    actualizarPedidoRestauranteMenu,
     [
-      nombre,
-      documento,
-      direccion,
-      contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento,
-      ID
+      id_pedido,
+      id_restaurante,
+      id_menu,
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
-        res.status(201).json({ status: `Usuario actualizado correctamente` });
+        res.status(201).json({ status: `Pedido restaurante menu actualizado correctamente` });
       } else {
         res.status(500);
       }
@@ -90,15 +73,15 @@ router.put("/usuario/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/usuario/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete 
+router.delete("/pedido_restaurante_menu/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM usuario WHERE ID =?`,
-    [ID],
+    `DELETE FROM pedido_restaurante_menu WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
-        res.status(200).json({ status: `El usuario ha sido eliminado` });
+        res.status(200).json({ status: `El pedido_restaurante_menu ha sido eliminado` });
       } else {
         res.status(500);
       }

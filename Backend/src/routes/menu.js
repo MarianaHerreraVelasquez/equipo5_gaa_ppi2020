@@ -19,21 +19,20 @@ router.get("/menu", (req, res) => {
 //Petición post
 router.post("/menu", (req, res) => {
   const {
-    precios,
+    tipo, 
     platillos,
-    ID_categoria
+    id_categoria
   } = req.body;
 
-  let nuevoMenu = `INSERT INTO parque (  precios,
-    platillos,
-    ID_categoria ) VALUES (?,?,?,?)`;
+  let nuevoMenu = `INSERT INTO parque (  tipo,
+    platillos, id_categoria) VALUES (?,?,?)`;
 
   mysqlConnection.query(
     nuevoMenu,
     [
-      precios,
+      tipo, 
       platillos,
-      ID_categoria
+      id_categoria
     ],
     (err, results, fields) => {
       if (err) {
@@ -46,23 +45,23 @@ router.post("/menu", (req, res) => {
 });
 
 //Petición put
-router.put("/menu/:ID", (req, res) => {
+router.put("/menu/:id", (req, res) => {
   const {
-      precios,
-      platillos,
-      ID_categoria
+    tipo, 
+    platillos,
+    id_categoria
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarMenu = `UPDATE menu SET precios=?, platillos=?, ID_categoria=?
-  WHERE ID = ?`;
+  let actualizarMenu = `UPDATE menu SET tipo=?, platillos=?, id_categoria=?
+  WHERE id = ?`;
   mysqlConnection.query(
     actualizarMenu,
     [
-      precios,
+      tipo, 
       platillos,
-      ID_categoria,
-      ID
+      id_categoria, 
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
@@ -74,12 +73,12 @@ router.put("/menu/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/menu/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete 
+router.delete("/menu/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM menu WHERE ID =?`,
-    [ID],
+    `DELETE FROM menu WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
         res.status(200).json({ status: `El menu ha sido eliminado` });

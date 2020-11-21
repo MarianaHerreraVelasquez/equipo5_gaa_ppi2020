@@ -23,9 +23,8 @@ router.post("/usuario", (req, res) => {
     documento,
     direccion,
     contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
-
+    id_tipo_usuario,
+    id_tipo_documento
   } = req.body;
 
   let nuevoUsuario = `INSERT INTO usuario (  nombre,
@@ -33,7 +32,7 @@ router.post("/usuario", (req, res) => {
     dirrecion,
     contrasena,
     id_tipo_usuario,
-    id_tipo_documento ) VALUES (?,?,?,?,?,?,?)`;
+    id_tipo_documento ) VALUES (?,?,?,?,?,?)`;
 
   mysqlConnection.query(
     nuevoUsuario,
@@ -42,8 +41,8 @@ router.post("/usuario", (req, res) => {
       documento,
       direccion,
       contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento
+      id_tipo_usuario,
+      id_tipo_documento
     ],
     (err, results, fields) => {
       if (err) {
@@ -56,19 +55,19 @@ router.post("/usuario", (req, res) => {
 });
 
 //Petición put
-router.put("/usuario/:ID", (req, res) => {
+router.put("/usuario/:id", (req, res) => {
   const {
     nombre,
     documento,
     direccion,
     contrasena,
-    ID_tipo_usuario,
-    ID_tipo_documento
+    id_tipo_usuario,
+    id_tipo_documento
   } = req.body;
-  const { ID } = req.params;
+  const { id } = req.params;
 
-  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, ID_tipo_usuario=?, ID_tipo_documento=? 
-  WHERE ID = ?`;
+  let actualizarUsuario = `UPDATE usuario SET nombre=?, documento=?, direccion=?, contraseña=?, id_tipo_usuario=?, id_tipo_documento=? 
+  WHERE id = ?`;
   mysqlConnection.query(
     actualizarUsuario,
     [
@@ -76,9 +75,9 @@ router.put("/usuario/:ID", (req, res) => {
       documento,
       direccion,
       contrasena,
-      ID_tipo_usuario,
-      ID_tipo_documento,
-      ID
+      id_tipo_usuario,
+      id_tipo_documento,
+      id
     ],
     (err, rows, fields) => {
       if (!err) {
@@ -90,12 +89,12 @@ router.put("/usuario/:ID", (req, res) => {
   );
 });
 
-//PETICIÓN O SERVICIO DELETE - ELIMINACIÓN DE DATOS
-router.delete("/usuario/:ID", (req, res) => {
-  const { ID } = req.params;
+//Petición delete
+router.delete("/usuario/:id", (req, res) => {
+  const { id } = req.params;
   mysqlConnection.query(
-    `DELETE FROM usuario WHERE ID =?`,
-    [ID],
+    `DELETE FROM usuario WHERE id =?`,
+    [id],
     (err, rows, fields) => {
       if ("!err") {
         res.status(200).json({ status: `El usuario ha sido eliminado` });
