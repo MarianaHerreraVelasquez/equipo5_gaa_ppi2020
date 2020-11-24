@@ -84,3 +84,5 @@ router.delete("/categoria/:id", (req, res) => {
   }
 );
 });
+
+module.exports = router;
