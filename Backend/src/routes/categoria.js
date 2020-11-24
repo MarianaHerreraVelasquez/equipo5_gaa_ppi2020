@@ -26,23 +26,23 @@ router.post("/categoria", (req, res) => {
   let nuevaCategoria = `INSERT INTO categoria  (  nombre,
     referencia ) VALUES (?,?)`;
 
-    mysqlConnection.query(
-      nuevaCategoria,
-      [
-        nombre,
-        referencia
-      ],
-      (err, results, fields) => {
-        if (err) {
-          res.status(500);
-        } else {
-          res.status(201).json({ message: `Categoria ingresada` });
-        }
+  mysqlConnection.query(
+    nuevaCategoria,
+    [
+      nombre,
+      referencia
+    ],
+    (err, results, fields) => {
+      if (err) {
+        res.status(500);
+      } else {
+        res.status(201).json({ message: `Categoria ingresada` });
       }
-    );
-  });
+    }
+  );
+});
 
-  //Petición put
+//Petición put
 router.put("/categoria/:id", (req, res) => {
   const {
     nombre,
@@ -76,13 +76,13 @@ router.delete("/categoria/:id", (req, res) => {
     `DELETE FROM categoria WHERE id =?`,
     [id],
     (err, rows, fields) => {
-    if ("!err") {
-      res.status(200).json({ status: `La categoria ha sido eliminada` });
-    } else {
-      res.status(500);
+      if ("!err") {
+        res.status(200).json({ status: `La categoria ha sido eliminada` });
+      } else {
+        res.status(500);
+      }
     }
-  }
-);
+  );
 });
 
 module.exports = router;
