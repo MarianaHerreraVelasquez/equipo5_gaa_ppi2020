@@ -25,3 +25,10 @@ router.post("/categoria", (req, res) => {
 
   let nuevaCategoria = `INSERT INTO categoria  (  nombre,
     referencia ) VALUES (?,?)`;
+
+    mysqlConnection.query(
+      nuevaCategoria,
+      [
+        nombre,
+        referencia
+      ],
