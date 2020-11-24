@@ -77,3 +77,4 @@ router.delete("/categoria/:id", (req, res) => {
     [id],
     (err, rows, fields) => {
     if ("!err") {
+      res.status(200).json({ status: `La categoria ha sido eliminada` });
