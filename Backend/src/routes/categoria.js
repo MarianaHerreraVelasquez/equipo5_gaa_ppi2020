@@ -45,3 +45,12 @@ router.post("/categoria", (req, res) => {
   //Petición put
 router.put("/categoria/:id", (req, res) => {
   const {
+    nombre,
+    referencia
+  } = req.body;
+  const { id } = req.params;
+
+  let actualizarCategoria = `UPDATE categoria SET nombre=?, referencia=?
+  WHERE id = ?`;
+  mysqlConnection.query(
+    actualizarCategoria,
