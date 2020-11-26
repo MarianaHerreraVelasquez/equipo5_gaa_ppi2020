@@ -72,7 +72,8 @@ router.post("/telefono", (req, res) => {
         }
         );
       });
-      
-      
+            
 //Petición delete
 router.delete("/telefono/:id", (req, res) => {
+  const { id } = req.params;
+  mysqlConnection.query(
