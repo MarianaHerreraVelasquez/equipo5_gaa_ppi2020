@@ -93,3 +93,5 @@ router.delete("/restaurante/:id", (req, res) => {
     [id],
     (err, rows, fields) => {
       if ("!err") {
+        res.status(200).json({ status: `El restaurante ha sido eliminado` });
+      } else {
