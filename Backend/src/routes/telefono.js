@@ -79,3 +79,5 @@ router.delete("/telefono/:id", (req, res) => {
   mysqlConnection.query(
     `DELETE FROM telefono WHERE id =?`,
     [id],
+    (err, rows, fields) => {
+      if ("!err") {
