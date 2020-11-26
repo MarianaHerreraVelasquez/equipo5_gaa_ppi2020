@@ -62,3 +62,6 @@ router.post("/telefono", (req, res) => {
           fijo,
           prefijo,
           id
+        ],
+        (err, rows, fields) => {
+          if (!err) {
