@@ -39,3 +39,6 @@ router.post("/restaurante", (req, res) => {
         tipo,
         direccion,
         marca,
+        id_telefono,
+        id_tipo_ciudad
+      ],
