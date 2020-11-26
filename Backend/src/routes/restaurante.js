@@ -26,3 +26,5 @@ router.post("/restaurante", (req, res) => {
     id_telefono,
     id_tipo_ciudad
   } = req.body;
+
+  let nuevoRestaurante = `INSERT INTO restaurante (  tipo,
