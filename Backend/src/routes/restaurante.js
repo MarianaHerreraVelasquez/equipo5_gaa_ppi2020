@@ -8,3 +8,4 @@ const { Router } = require("express");
 //Petición get
 
 router.get("/restaurante", (req, res) => {
+  mysqlConnection.query("SELECT * FROM restaurante", (err, rows, fields) => {
