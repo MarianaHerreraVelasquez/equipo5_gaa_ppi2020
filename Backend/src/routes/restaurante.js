@@ -13,3 +13,4 @@ router.get("/restaurante", (req, res) => {
       res.status(200).json(rows);
     } else {
       res.status(500);
+    }
