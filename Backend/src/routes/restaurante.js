@@ -21,3 +21,4 @@ router.get("/restaurante", (req, res) => {
 router.post("/restaurante", (req, res) => {
   const {
     tipo,
+    direccion,
