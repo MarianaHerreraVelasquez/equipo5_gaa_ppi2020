@@ -22,3 +22,4 @@ router.post("/telefono", (req, res) => {
     movil,
     fijo,
     prefijo,
+  } = req.body;
