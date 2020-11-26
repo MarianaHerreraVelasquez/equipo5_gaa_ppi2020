@@ -16,3 +16,5 @@ router.get("/restaurante", (req, res) => {
     }
   });
 });
+
+//Petición post
