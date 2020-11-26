@@ -11,3 +11,5 @@ router.get("/telefono", (req, res) => {
     if (!err) {
       res.status(200).json(rows);
     } else {
+      res.status(500);
+    }
