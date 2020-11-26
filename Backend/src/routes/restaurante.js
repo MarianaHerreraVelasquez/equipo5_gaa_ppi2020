@@ -91,3 +91,4 @@ router.delete("/restaurante/:id", (req, res) => {
   mysqlConnection.query(
     `DELETE FROM restaurante WHERE id =?`,
     [id],
+    (err, rows, fields) => {
