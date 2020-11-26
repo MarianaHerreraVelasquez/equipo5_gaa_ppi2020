@@ -20,3 +20,4 @@ router.get("/restaurante", (req, res) => {
 //Petición post
 router.post("/restaurante", (req, res) => {
   const {
+    tipo,
