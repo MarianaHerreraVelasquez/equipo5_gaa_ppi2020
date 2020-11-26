@@ -40,3 +40,8 @@ router.post("/telefono", (req, res) => {
         } else {
           res.status(201).json({ message: `Telefono registrado` });
         }
+      }
+      );
+    });
+    
+    //Petición put
