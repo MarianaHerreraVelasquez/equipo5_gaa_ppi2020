@@ -51,3 +51,6 @@ router.post("/telefono", (req, res) => {
         fijo,
         prefijo,
       } = req.body;
+      const { id } = req.params;
+
+      let actualizarTelefono = `UPDATE telefono SET movil=?, fijo=?, prefijo=? 
