@@ -49,3 +49,6 @@ router.post("/restaurante", (req, res) => {
           res.status(201).json({ message: `Restaurante ingresado` });
         }
       }
+      );
+    });
+    
