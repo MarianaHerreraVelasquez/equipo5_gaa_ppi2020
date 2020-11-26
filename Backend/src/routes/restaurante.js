@@ -92,3 +92,4 @@ router.delete("/restaurante/:id", (req, res) => {
     `DELETE FROM restaurante WHERE id =?`,
     [id],
     (err, rows, fields) => {
+      if ("!err") {
