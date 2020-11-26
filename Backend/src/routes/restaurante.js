@@ -37,3 +37,4 @@ router.post("/restaurante", (req, res) => {
       nuevoRestaurante,
       [
         tipo,
+        direccion,
