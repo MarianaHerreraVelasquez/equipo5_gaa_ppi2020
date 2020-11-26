@@ -67,3 +67,4 @@ router.put("/restaurante/:id", (req, res) => {
   WHERE id = ?`;
   mysqlConnection.query(
     actualizarRestaurante,
+    [
