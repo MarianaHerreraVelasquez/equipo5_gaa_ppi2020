@@ -49,3 +49,5 @@ router.post("/telefono", (req, res) => {
       const {
         movil,
         fijo,
+        prefijo,
+      } = req.body;
