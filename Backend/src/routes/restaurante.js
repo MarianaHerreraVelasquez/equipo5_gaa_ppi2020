@@ -82,3 +82,6 @@ router.put("/restaurante/:id", (req, res) => {
         res.status(500);
       }
     }
+    );
+  });
+  
