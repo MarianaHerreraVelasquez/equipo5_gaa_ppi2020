@@ -62,3 +62,5 @@ router.put("/restaurante/:id", (req, res) => {
     id_tipo_ciudad
   } = req.body;
   const { id } = req.params;
+
+  let actualizarRestaurante = `UPDATE restaurante SET tipo=?, direccion=?, marca=?, id_telefono=?, id_tipo_ciudad=? 
