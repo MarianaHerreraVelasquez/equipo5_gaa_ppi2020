@@ -9,3 +9,5 @@ const { Router } = require("express");
 router.get("/telefono", (req, res) => {
   mysqlConnection.query("SELECT * FROM telefono", (err, rows, fields) => {
     if (!err) {
+      res.status(200).json(rows);
+    } else {
