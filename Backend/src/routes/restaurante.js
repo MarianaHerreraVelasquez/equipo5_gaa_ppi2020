@@ -55,3 +55,4 @@ router.post("/restaurante", (req, res) => {
 //Petición put
 router.put("/restaurante/:id", (req, res) => {
   const {
+    tipo,
