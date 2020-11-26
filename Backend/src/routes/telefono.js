@@ -13,3 +13,5 @@ router.get("/telefono", (req, res) => {
     } else {
       res.status(500);
     }
+  });
+});
