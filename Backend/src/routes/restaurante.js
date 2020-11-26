@@ -29,3 +29,4 @@ router.post("/restaurante", (req, res) => {
 
   let nuevoRestaurante = `INSERT INTO restaurante (  tipo,
     direccion,
+    marca,
