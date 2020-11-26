@@ -29,3 +29,6 @@ router.post("/telefono", (req, res) => {
 
     mysqlConnection.query(
       nuevoTelefono,
+      [
+        movil,
+        fijo,
