@@ -66,3 +66,4 @@ router.put("/restaurante/:id", (req, res) => {
   let actualizarRestaurante = `UPDATE restaurante SET tipo=?, direccion=?, marca=?, id_telefono=?, id_tipo_ciudad=? 
   WHERE id = ?`;
   mysqlConnection.query(
+    actualizarRestaurante,
