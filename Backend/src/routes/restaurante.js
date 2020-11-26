@@ -25,3 +25,4 @@ router.post("/restaurante", (req, res) => {
     marca,
     id_telefono,
     id_tipo_ciudad
+  } = req.body;
