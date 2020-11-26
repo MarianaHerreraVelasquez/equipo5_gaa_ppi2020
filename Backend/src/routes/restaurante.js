@@ -57,3 +57,4 @@ router.put("/restaurante/:id", (req, res) => {
   const {
     tipo,
     direccion,
+    marca,
