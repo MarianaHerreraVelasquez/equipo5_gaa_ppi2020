@@ -38,3 +38,5 @@ router.post("/telefono", (req, res) => {
         if (err) {
           res.status(500);
         } else {
+          res.status(201).json({ message: `Telefono registrado` });
+        }
