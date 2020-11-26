@@ -36,3 +36,4 @@ router.post("/restaurante", (req, res) => {
     mysqlConnection.query(
       nuevoRestaurante,
       [
+        tipo,
