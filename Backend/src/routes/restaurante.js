@@ -86,3 +86,4 @@ router.put("/restaurante/:id", (req, res) => {
   });
   
 //Petición delete
+router.delete("/restaurante/:id", (req, res) => {
