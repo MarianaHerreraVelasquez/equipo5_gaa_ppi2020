@@ -77,3 +77,5 @@ router.post("/telefono", (req, res) => {
 router.delete("/telefono/:id", (req, res) => {
   const { id } = req.params;
   mysqlConnection.query(
+    `DELETE FROM telefono WHERE id =?`,
+    [id],
