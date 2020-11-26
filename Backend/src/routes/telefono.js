@@ -87,3 +87,7 @@ router.delete("/telefono/:id", (req, res) => {
       }
     }
     );
+  });
+
+  module.exports = router;
+  
