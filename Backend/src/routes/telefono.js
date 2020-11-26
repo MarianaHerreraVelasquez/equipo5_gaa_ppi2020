@@ -23,3 +23,5 @@ router.post("/telefono", (req, res) => {
     fijo,
     prefijo,
   } = req.body;
+  let nuevoTelefono = `INSERT INTO telefono (  movil,
+    fijo, prefijo) VALUES (?,?,?)`;
