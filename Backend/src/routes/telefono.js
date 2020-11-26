@@ -83,3 +83,7 @@ router.delete("/telefono/:id", (req, res) => {
       if ("!err") {
         res.status(200).json({ status: `El telefono ha sido eliminado` });
       } else {
+        res.status(500);
+      }
+    }
+    );
