@@ -6,3 +6,5 @@ const { Router } = require("express");
 
 // Restaurante
 //Petición get
+
+router.get("/restaurante", (req, res) => {
