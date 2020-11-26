@@ -100,3 +100,5 @@ router.delete("/restaurante/:id", (req, res) => {
     }
   );
 });
+
+module.exports = router;
