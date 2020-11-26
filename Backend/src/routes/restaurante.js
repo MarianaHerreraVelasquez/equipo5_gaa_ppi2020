@@ -60,3 +60,4 @@ router.put("/restaurante/:id", (req, res) => {
     marca,
     id_telefono,
     id_tipo_ciudad
+  } = req.body;
