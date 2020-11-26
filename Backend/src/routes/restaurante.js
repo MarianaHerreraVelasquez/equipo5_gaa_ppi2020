@@ -34,3 +34,4 @@ router.post("/restaurante", (req, res) => {
     id_tipo_ciudad  ) VALUES (?,?,?,?,?)`;
 
     mysqlConnection.query(
+      nuevoRestaurante,
