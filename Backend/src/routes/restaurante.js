@@ -28,3 +28,4 @@ router.post("/restaurante", (req, res) => {
   } = req.body;
 
   let nuevoRestaurante = `INSERT INTO restaurante (  tipo,
+    direccion,
