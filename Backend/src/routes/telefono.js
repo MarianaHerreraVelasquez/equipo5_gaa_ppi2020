@@ -45,3 +45,7 @@ router.post("/telefono", (req, res) => {
     });
     
     //Petición put
+    router.put("/telefono/:id", (req, res) => {
+      const {
+        movil,
+        fijo,
