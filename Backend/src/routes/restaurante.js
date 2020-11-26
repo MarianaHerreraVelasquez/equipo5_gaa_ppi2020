@@ -43,3 +43,4 @@ router.post("/restaurante", (req, res) => {
         id_tipo_ciudad
       ],
       (err, results, fields) => {
+        if (err) {
