@@ -54,3 +54,5 @@ router.post("/telefono", (req, res) => {
       const { id } = req.params;
 
       let actualizarTelefono = `UPDATE telefono SET movil=?, fijo=?, prefijo=? 
+      WHERE id = ?`;
+      mysqlConnection.query(
