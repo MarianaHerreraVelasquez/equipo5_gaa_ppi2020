@@ -14,3 +14,4 @@ router.get("/restaurante", (req, res) => {
     } else {
       res.status(500);
     }
+  });
