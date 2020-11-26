@@ -80,3 +80,5 @@ router.put("/restaurante/:id", (req, res) => {
         res.status(201).json({ status: `Restaurante actualizado con éxito` });
       } else {
         res.status(500);
+      }
+    }
