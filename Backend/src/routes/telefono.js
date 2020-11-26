@@ -73,3 +73,6 @@ router.post("/telefono", (req, res) => {
         );
       });
       
+      
+//Petición delete
+router.delete("/telefono/:id", (req, res) => {
