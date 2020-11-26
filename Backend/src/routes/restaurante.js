@@ -74,3 +74,4 @@ router.put("/restaurante/:id", (req, res) => {
       id_telefono,
       id_tipo_ciudad,
       id
+    ],
