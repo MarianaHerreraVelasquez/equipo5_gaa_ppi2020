@@ -6,3 +6,6 @@ const { Router } = require("express");
 
 // Telefonos
 //Petición get
+router.get("/telefono", (req, res) => {
+  mysqlConnection.query("SELECT * FROM telefono", (err, rows, fields) => {
+    if (!err) {
