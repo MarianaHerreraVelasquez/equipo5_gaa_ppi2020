@@ -89,3 +89,4 @@ router.put("/restaurante/:id", (req, res) => {
 router.delete("/restaurante/:id", (req, res) => {
   const { id } = req.params;
   mysqlConnection.query(
+    `DELETE FROM restaurante WHERE id =?`,
