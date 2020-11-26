@@ -36,3 +36,5 @@ router.post("/telefono", (req, res) => {
       ],
       (err, results, fields) => {
         if (err) {
+          res.status(500);
+        } else {
