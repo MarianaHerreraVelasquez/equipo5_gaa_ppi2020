@@ -15,3 +15,4 @@ router.get("/restaurante", (req, res) => {
       res.status(500);
     }
   });
+});
