@@ -56,3 +56,4 @@ router.post("/restaurante", (req, res) => {
 router.put("/restaurante/:id", (req, res) => {
   const {
     tipo,
+    direccion,
