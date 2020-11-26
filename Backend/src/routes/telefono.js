@@ -67,3 +67,5 @@ router.post("/telefono", (req, res) => {
           if (!err) {
             res.status(201).json({ status: `Telefono actualizado correctamente` });
           } else {
+            res.status(500);
+          }
