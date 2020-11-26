@@ -60,3 +60,5 @@ router.post("/telefono", (req, res) => {
         [
           movil,
           fijo,
+          prefijo,
+          id
