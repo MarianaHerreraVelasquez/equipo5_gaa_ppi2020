@@ -76,3 +76,5 @@ router.put("/restaurante/:id", (req, res) => {
       id
     ],
     (err, rows, fields) => {
+      if (!err) {
+        res.status(201).json({ status: `Restaurante actualizado con éxito` });
