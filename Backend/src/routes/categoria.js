@@ -28,3 +28,6 @@ router.post("/categoria", (req, res) => {
 
     mysqlConnection.query(
       nuevaCategoria,
+      [
+        nombre,
+        referencia
