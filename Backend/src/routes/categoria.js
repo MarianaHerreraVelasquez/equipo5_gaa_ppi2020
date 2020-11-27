@@ -15,8 +15,10 @@ router.get("/categoria", (req, res) => {
     }
   });
 });
+
 //Petición post
 router.post("/categoria", (req, res) => {
   const {
     nombre,
     referencia
+  } = req.body;
