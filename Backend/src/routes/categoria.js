@@ -12,3 +12,4 @@ router.get("/categoria", (req, res) => {
       res.status(200).json(rows);
     } else {
       res.status(500);
+    }
