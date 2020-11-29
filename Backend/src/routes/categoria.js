@@ -6,3 +6,4 @@ const { Router } = require("express");
 
 // Categoria
 //Petición get
+router.get("/categoria", (req, res) => {
