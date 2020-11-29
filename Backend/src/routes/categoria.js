@@ -15,3 +15,5 @@ router.get("/categoria", (req, res) => {
     }
   });
 });
+
+//Petición post
