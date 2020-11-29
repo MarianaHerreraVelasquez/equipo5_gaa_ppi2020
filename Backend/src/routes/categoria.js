@@ -69,3 +69,20 @@ router.put("/categoria/:id", (req, res) => {
   );
 });
 
+//Petición delete
+router.delete("/categoria/:id", (req, res) => {
+  const { id } = req.params;
+  mysqlConnection.query(
+    `DELETE FROM categoria WHERE id =?`,
+    [id],
+    (err, rows, fields) => {
+      if ("!err") {
+        res.status(200).json({ status: `La categoria ha sido eliminada` });
+      } else {
+        res.status(500);
+      }
+    }
+  );
+});
+
+module.exports = router;
