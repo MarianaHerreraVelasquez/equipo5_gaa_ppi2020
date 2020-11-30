@@ -56,6 +56,7 @@ router.put("/categoria/:id", (req, res) => {
     actualizarCategoria,
     [
       nombre,
+      referencia,
 
 
 
