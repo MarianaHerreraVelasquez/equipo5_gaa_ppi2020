@@ -57,6 +57,7 @@ router.put("/categoria/:id", (req, res) => {
     [
       nombre,
       referencia,
+      id
 
 
 
