@@ -54,3 +54,4 @@ router.post("/categoria", (req, res) => {
     WHERE id = ?`;
     mysqlConnection.query(
       actualizarCategoria,
+      [
