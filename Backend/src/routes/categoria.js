@@ -74,3 +74,4 @@ router.post("/categoria", (req, res) => {
     const { id } = req.params;
     mysqlConnection.query(
       `DELETE FROM categoria WHERE id =?`,
+      [id],
