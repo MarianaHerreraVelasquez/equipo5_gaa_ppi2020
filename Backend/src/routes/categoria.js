@@ -46,6 +46,7 @@ router.post("/categoria", (req, res) => {
 router.put("/categoria/:id", (req, res) => {
   const {
     nombre,
+    referencia
 
 
 
