@@ -75,6 +75,7 @@ router.put("/categoria/:id", (req, res) => {
     mysqlConnection.query(
       `DELETE FROM categoria WHERE id =?`,
       [id],
+      (err, rows, fields) => {
 
 
 
