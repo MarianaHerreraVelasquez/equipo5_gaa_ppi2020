@@ -80,3 +80,5 @@ router.post("/categoria", (req, res) => {
           res.status(200).json({ status: `La categoria ha sido eliminada` });
         } else {
           res.status(500);
+        }
+      }
