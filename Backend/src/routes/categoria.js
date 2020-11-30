@@ -84,3 +84,5 @@ router.put("/categoria/:id", (req, res) => {
       }
     );
   });
+
+  module.exports = router;
