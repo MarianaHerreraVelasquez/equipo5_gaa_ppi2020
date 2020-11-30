@@ -50,5 +50,7 @@ router.put("/categoria/:id", (req, res) => {
   } = req.body;
   const { id } = req.params;
 
+  let actualizarCategoria = `UPDATE categoria SET nombre=?, referencia=?
+
 
 
