@@ -13,3 +13,4 @@ router.get("/categoria", (req, res) => {
     } else {
       res.status(500);
       }
+    });
