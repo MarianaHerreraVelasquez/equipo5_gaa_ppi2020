@@ -9,3 +9,4 @@ const { Router } = require("express")
 router.get("/categoria", (req, res) => {
   mysqlConnection.query("SELECT * FROM categoria", (err, rows, fields) => {
     if (!err) {
+      res.status(200).json(rows);
