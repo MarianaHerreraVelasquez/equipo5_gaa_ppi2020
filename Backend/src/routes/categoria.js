@@ -32,6 +32,7 @@ router.post("/categoria", (req, res) => {
         nombre,
         referencia
       ],
+      (err, results, fields) => {
 
 
 
