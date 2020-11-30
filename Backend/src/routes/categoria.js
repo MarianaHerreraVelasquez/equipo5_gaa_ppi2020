@@ -14,3 +14,4 @@ router.get("/categoria", (req, res) => {
       res.status(500);
       }
     });
+  });
