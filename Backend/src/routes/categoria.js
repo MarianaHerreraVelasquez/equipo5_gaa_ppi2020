@@ -69,5 +69,7 @@ router.put("/categoria/:id", (req, res) => {
     );
   });
 
+  //Petición delete
+
 
 
