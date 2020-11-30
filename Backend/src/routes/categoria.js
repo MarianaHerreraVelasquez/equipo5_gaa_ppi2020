@@ -36,3 +36,4 @@ router.post("/categoria", (req, res) => {
         if (err) {
           res.status(500);
         } else {
+          res.status(201).json({ message: `Categoria ingresada` });
