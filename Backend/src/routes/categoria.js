@@ -49,3 +49,6 @@ router.post("/categoria", (req, res) => {
       referencia
     } = req.body;
     const { id } = req.params;
+
+    let actualizarCategoria = `UPDATE categoria SET nombre=?, referencia=?
+    WHERE id = ?`;
