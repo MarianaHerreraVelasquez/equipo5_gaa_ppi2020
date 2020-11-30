@@ -24,3 +24,4 @@ router.post("/categoria", (req, res) => {
   } = req.body;
 
   let nuevaCategoria = `INSERT INTO categoria  (  nombre,
+    referencia ) VALUES (?,?)`;
