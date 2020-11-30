@@ -76,3 +76,4 @@ router.post("/categoria", (req, res) => {
       `DELETE FROM categoria WHERE id =?`,
       [id],
       (err, rows, fields) => {
+        if ("!err") {
