@@ -30,3 +30,5 @@ router.post("/categoria", (req, res) => {
       nuevaCategoria,
       [
         nombre,
+        referencia
+
