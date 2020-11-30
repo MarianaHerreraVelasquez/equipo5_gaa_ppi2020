@@ -67,3 +67,4 @@ router.post("/categoria", (req, res) => {
         }
       }
     );
+  });
