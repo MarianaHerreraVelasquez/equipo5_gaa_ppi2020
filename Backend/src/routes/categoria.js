@@ -64,3 +64,4 @@ router.post("/categoria", (req, res) => {
           res.status(201).json({ status: `Categoria actualizada correctamente` });
         } else {
           res.status(500);
+        }
