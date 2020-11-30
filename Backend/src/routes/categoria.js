@@ -7,3 +7,4 @@ const { Router } = require("express")
 // Categoria
 //Petición get
 router.get("/categoria", (req, res) => {
+  mysqlConnection.query("SELECT * FROM categoria", (err, rows, fields) => {
