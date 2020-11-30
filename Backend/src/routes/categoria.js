@@ -48,3 +48,4 @@ router.post("/categoria", (req, res) => {
       nombre,
       referencia
     } = req.body;
+    const { id } = req.params;
