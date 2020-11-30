@@ -45,6 +45,7 @@ router.post("/categoria", (req, res) => {
 //Petición put
 router.put("/categoria/:id", (req, res) => {
   const {
+    nombre,
 
 
 
