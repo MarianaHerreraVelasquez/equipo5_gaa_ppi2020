@@ -65,3 +65,4 @@ router.post("/categoria", (req, res) => {
         } else {
           res.status(500);
         }
+      }
