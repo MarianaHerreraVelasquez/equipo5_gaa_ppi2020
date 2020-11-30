@@ -34,3 +34,4 @@ router.post("/categoria", (req, res) => {
       ],
       (err, results, fields) => {
         if (err) {
+          res.status(500);
