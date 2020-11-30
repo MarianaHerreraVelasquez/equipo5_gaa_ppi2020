@@ -20,3 +20,4 @@ router.get("/categoria", (req, res) => {
 router.post("/categoria", (req, res) => {
   const {
     nombre,
+    referencia
