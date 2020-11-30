@@ -41,3 +41,5 @@ router.post("/categoria", (req, res) => {
       }
     );
   });
+
+  //Petición put
