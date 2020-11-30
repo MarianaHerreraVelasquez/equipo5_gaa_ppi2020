@@ -83,4 +83,4 @@ router.put("/categoria/:id", (req, res) => {
         }
       }
     );
-    
+  });
