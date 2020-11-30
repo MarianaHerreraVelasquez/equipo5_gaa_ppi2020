@@ -56,3 +56,4 @@ router.post("/categoria", (req, res) => {
       actualizarCategoria,
       [
         nombre,
+        referencia,
