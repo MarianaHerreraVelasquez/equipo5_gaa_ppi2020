@@ -47,3 +47,4 @@ router.post("/categoria", (req, res) => {
     const {
       nombre,
       referencia
+    } = req.body;
