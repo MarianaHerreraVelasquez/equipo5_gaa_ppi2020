@@ -59,3 +59,4 @@ router.post("/categoria", (req, res) => {
         referencia,
         id
       ],
+      (err, rows, fields) => {
