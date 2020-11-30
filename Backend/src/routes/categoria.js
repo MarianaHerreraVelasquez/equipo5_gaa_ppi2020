@@ -60,8 +60,7 @@ router.put("/categoria/:id", (req, res) => {
       id
     ],
     (err, rows, fields) => {
-
-
+      if (!err) {
 
 
 
