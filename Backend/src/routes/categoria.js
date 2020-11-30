@@ -48,6 +48,7 @@ router.put("/categoria/:id", (req, res) => {
     nombre,
     referencia
   } = req.body;
+  const { id } = req.params;
 
 
 
