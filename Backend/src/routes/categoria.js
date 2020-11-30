@@ -63,6 +63,8 @@ router.put("/categoria/:id", (req, res) => {
       if (!err) {
         res.status(201).json({ status: `Categoria actualizada correctamente` });
       } else {
+        res.status(500);
+      }
 
 
 
