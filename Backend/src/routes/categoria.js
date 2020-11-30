@@ -65,6 +65,9 @@ router.put("/categoria/:id", (req, res) => {
       } else {
         res.status(500);
       }
+    }
+    );
+  });
 
 
 
